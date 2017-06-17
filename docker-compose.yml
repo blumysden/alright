@@ -3,6 +3,8 @@ services:
   web:
     build: .
     container_name: alright-dev
+    volumes:
+      - .:/usr/src/app
     ports:
       - '3000:3000'
     # env_file: env.list
