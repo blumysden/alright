@@ -15,11 +15,8 @@ function Nav() {
       <li className={styles.navItem}>
         <Link className={styles.link} to="/">Home</Link>
       </li>
-      <li className={styles.navItem}>
-        <Link className={styles.link} to="/tools">Tools</Link>
-      </li>
-      { files.map((file) => {
-        return <li className={styles.navItem}>
+      { files.map((file, i) => {
+        return <li className={styles.navItem} key={ `foo-link-${i}` }>
           <Link className={styles.link} to={`/foo/${file}`}>{ file }</Link>
         </li>
       }) }

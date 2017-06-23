@@ -5,6 +5,10 @@ import styles from './styles.scss';
 
 class FooExample extends React.Component {
 
+  static propTypes = {
+    bar: PropTypes.string.isRequired
+  }
+
   constructor() {
     super()
   }
@@ -14,14 +18,11 @@ class FooExample extends React.Component {
   }
 
   render() {
-    return <p>I am the FooExample!  My bar is { this.getBar() }.  Bar is also { this.props.bar }!</p>
+    return <p>I am the FooExample!  My bar is { this.getBar() }.</p>
   }
 
 }
 
-FooExample.propTypes = {
-  bar: PropTypes.string.isRequired
-}
 
 
 function Foo({ routeParams }) {
@@ -29,6 +30,7 @@ function Foo({ routeParams }) {
   if (routeParams.date) {
     return <div>
       <p>I AM FOO { routeParams.date }</p>
+      <FooExample bar="wow" />
     </div>
   }
 
