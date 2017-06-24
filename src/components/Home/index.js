@@ -4,6 +4,7 @@ import styles from './styles.scss';
 
 import Search from '../Search';
 import Results from '../Results';
+import Map from '../Map';
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
         </p>
         <Search />
         <Results />
+        <Map />
       </section>
     </div>
   );

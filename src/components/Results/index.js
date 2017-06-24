@@ -21,30 +21,6 @@ class Results extends React.Component {
     if (prevProps.borough != this.props.borough) {
       this.fetchInternships()
     }
-    if (prevProps.updatedAgencies != this.props.updatedAgencies) {
-      this.renderMap()
-    }
-  }
-
-  renderMap() {
-    let { agencies }  = this.props
-    if (agencies.length === 0) {
-      return false;
-    }
-
-    var map = new google.maps.Map(ReactDOM.findDOMNode(this.mapContainer), {
-      center: { lng: agencies[0].lng, lat: agencies[0].lat },
-      zoom: 12
-    });
-
-    this.props.agencies.forEach((a) => {
-      let { lng, lat } = a
-      new google.maps.Marker({
-        position: { lng, lat },
-        map: map
-      });
-    })
-    console.log(ReactDOM.findDOMNode(this.mapContainer));
   }
 
   fetchInternships() {
@@ -90,7 +66,6 @@ class Results extends React.Component {
       return <div>
         <p>ALL RIGHT!  I LOVE { this.props.borough }</p>
         <p>I found { this.props.agencies.length } agencies for you!</p>
-        <div className={ styles.map } ref={ (elem) => this.mapContainer = elem }></div>
         <table>
           <tbody>
             { this.props.agencies.map((a, i) => {
