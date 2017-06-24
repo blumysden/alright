@@ -12,9 +12,7 @@ function Home() {
       <div className={styles.results}>
       <section className="col-sm-12 col-md-6 col-md-offset-3">
         <p className={styles.paragraph}>
-          Welcome to the <strong>Universal React Starter-kyt</strong>.
-          This starter kyt should serve as the base for an advanced,
-          server-rendered React app.
+          Welcome to <span><strong>JobHuntrs</strong></span> a platform that allows teenagers and young adults to find jobs and internships by connects them directly to NYC Summer Youth Emploment Agencies.
         </p>
         <Search />
         <Map />
