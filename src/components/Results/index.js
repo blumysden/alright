@@ -35,13 +35,15 @@ class Results extends React.Component {
           let city = obj.borough_community
           let zip = obj.location_1_zip
           let phone = obj.contact_number
+          let marker = obj.location_1.coordinates
 
           return {
             key: order,
             name: agency,
             location: address + ',\n' + city + ', NY ' + zip,
             phone: phone,
-            age: age_grade
+            age: age_grade,
+            marker
           }
         })
         console.log(agencies);
@@ -70,6 +72,7 @@ class Results extends React.Component {
                 <td>{a.name}</td>
                 <td>{a.location}</td>
                 <td>{a.phone}</td>
+                <td>{a.marker}</td>
               </tr>
             }) }
           </tbody>
