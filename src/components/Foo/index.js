@@ -29,7 +29,7 @@ function Foo({ routeParams }) {
 
   if (routeParams.date) {
     return <div>
-      <p>I AM FOO { routeParams.date }</p>
+      <p>I AM FOO 88 { routeParams.date }</p>
       <FooExample bar="wow" />
     </div>
   }
