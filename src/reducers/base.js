@@ -3,7 +3,7 @@ import { createStore } from 'redux'
 
 const initialProjectState = {
   borough: '',
-  internships: []
+  agencies: []
 }
 
 export const baseReducer = (initialState) => {
@@ -22,6 +22,10 @@ export const baseReducer = (initialState) => {
       case 'SET_BOROUGH':
         let borough = action.borough
         return Object.assign({}, state, { borough })
+
+      case 'SET_AGENCIES':
+        let agencies = action.agencies
+        return Object.assign({}, state, { agencies })
     }
 
     return state

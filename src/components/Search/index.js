@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import styles from './styles.scss';
 
 // TO DO: Preselect based on location determined by Google Geo Api?
-const BOROUGHS = ['Manhattan', 'The Bronx', 'Brooklyn', 'Queens', 'Staten Island']
+const BOROUGHS = ['Manhattan', 'Bronx', 'Brooklyn', 'Queens', 'Staten Island']
 
 class Search extends React.Component {
 
