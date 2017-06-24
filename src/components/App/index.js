@@ -5,37 +5,14 @@ import styles from './styles.scss';
 
 import Nav from '../Nav'
 
+import baseReducer from '../../reducers/base'
 
-const makeProjectReducer = (initialState) => {
-
-  return (state=initialState, action) => {
-    // const getById = (id) => {
-    //   return { ...state.entitiesById[id] }
-    // }
-
-    let { id, key } = action
-
-    switch (action.type) {
-      case 'RESET_STORE':
-        return action.store
-
-      // case 'ADD_ENTITY':
-      //   entitiesById = addWithChildren(entity, entitiesById)
-      //   parent.entities.splice(position, 0, entity.id)
-      //   entitiesById[parentId] = parent
-      //   return {...state, entitiesById }
-    }
-
-    return state
-  }
-
-}
 
 function App({ children }) {
 
   return (
     <div>
-      <h1 className={styles.title}>Alright</h1>
+      <h1 className={ `${styles.title} ${styles.green}` }>Alright</h1>
       <Nav />
       <div className={styles.content}>
         {children}
