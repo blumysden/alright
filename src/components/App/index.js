@@ -7,11 +7,10 @@ import Nav from '../Nav'
 
 import baseReducer from '../../reducers/base'
 
-
-function App({ children }) {
-
+function App({ children, borough }) {
+  console.log('what is borough?', borough);
   return (
-    <div>
+    <div className="container">
       <h1 className={ `${styles.title} ${styles.green}` }>Alright</h1>
       <Nav />
       <div className={styles.content}>
@@ -25,4 +24,19 @@ App.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default App;
+const mapStateToProps = (state, ownProps) => {
+  return { borough: state.borough }
+}
+const initialProjectState = {
+  borough: ''
+}
+const ConnectedApp = connect(mapStateToProps)(App)
+const projectStore = createStore(baseReducer(initialProjectState))
+const StoreProvider = (props) => {
+  return <Provider store={ projectStore }>
+    <ConnectedApp {...props}/>
+  </Provider>
+}
+
+
+export default StoreProvider;
