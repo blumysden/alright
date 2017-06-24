@@ -3,7 +3,7 @@ import { createStore } from 'redux'
 import { connect, Provider } from 'react-redux'
 import styles from './styles.scss';
 
-import Nav from '../Nav'
+// import Nav from '../Nav'
 
 import { projectStore, baseReducer } from '../../reducers/base'
 
@@ -41,11 +41,13 @@ class App extends React.Component {
   render() {
     let { children, borough } = this.props
     return (
-      <div className="container">
-        <div className="row">
-          <h1 className={ `${styles.title} col-sm-12` }>NYC SUMMER INTERNSHIP SEARCH</h1>
+      <div>
+        <div className={styles.titleBlock}>
+          <div className="row">
+            <h1 className={ `${styles.title} col-md-12` }>JobHuntrs</h1>
+          </div>
         </div>
-        <div className={styles.content}>
+        <div className={`${styles.content} container`}>
           {children}
         </div>
       </div>

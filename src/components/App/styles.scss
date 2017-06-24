@@ -1,9 +1,18 @@
 @import '../../shared-styles/variables';
-@import url('https://fonts.googleapis.com/css?family=Architects+Daughter');
+@import url('https://fonts.googleapis.com/css?family=Architects+Daughter|Lato');
 
 .title {
   text-align: center;
   font-family: 'Architects Daughter', serif;
+  font-size: 4em;
+  font-weight: bold;
+  font-variant: small-caps;
+  color: #FFFFFF;
+}
+
+.titleBlock {
+    background-color: #F55E61;
+    width: "100%";
 }
 
 .green {
@@ -24,6 +33,7 @@
 .content {
   width: $content-width;
   margin: $padding auto;
+  font-family: 'Lato', sans-serif;
 }
 
 .navItem {

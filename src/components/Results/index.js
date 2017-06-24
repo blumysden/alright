@@ -76,7 +76,7 @@ class Results extends React.Component {
       return <div></div>
     } else {
       return <div>
-        <p>I found { agencies.length } agencies for you!</p>
+        <p className={styles.count}>We've found { this.props.agencies.length } {(this.props.agencies.length == 1) ? 'agency' : 'agencies'} for you in { this.props.borough }!</p>
         <table className={ styles.table }>
           <thead>
             <tr>

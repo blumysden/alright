@@ -11,7 +11,9 @@ function Home() {
     <div className="row">
       <div className={styles.results}>
       <section className="col-sm-12 col-md-6 col-md-offset-3">
-        <p className="jumbotron">You need an internship to get ahead.  Or something.  Use this site to get there.</p>
+        <p className={styles.paragraph}>
+          Welcome to <span><strong>JobHuntrs</strong></span> a platform that allows teenagers and young adults to find jobs and internships by connects them directly to NYC Summer Youth Emploment Agencies.
+        </p>
         <Search />
         <Map />
       </section>
