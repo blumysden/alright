@@ -5,13 +5,15 @@ import styles from './styles.scss';
 
 import Nav from '../Nav'
 
-import baseReducer from '../../reducers/base'
+import { projectStore, baseReducer } from '../../reducers/base'
 
 function App({ children, borough }) {
   console.log('what is borough?', borough);
   return (
     <div className="container">
-      <h1 className={ `${styles.title} ${styles.green}` }>Alright</h1>
+      <div className="row">
+        <h1 className={ `${styles.title} col-sm-12` }>Alright</h1>
+      </div>
       <Nav />
       <div className={styles.content}>
         {children}
@@ -28,10 +30,10 @@ const mapStateToProps = (state, ownProps) => {
   return { borough: state.borough }
 }
 const initialProjectState = {
-  borough: ''
+  borough: '',
+  internships: []
 }
 const ConnectedApp = connect(mapStateToProps)(App)
-const projectStore = createStore(baseReducer(initialProjectState))
 const StoreProvider = (props) => {
   return <Provider store={ projectStore }>
     <ConnectedApp {...props}/>

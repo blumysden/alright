@@ -18,6 +18,15 @@ export default vo => `
 
     ${vo.mainCSSBundle ? '<link rel="stylesheet" type="text/css" href="' + vo.mainCSSBundle + '">' : ''}
 
+    <script>
+      window.MAPS_READY = false;
+      window.initMaps = function() {
+        window.MAPS_READY = true;
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQrxIkyh3pIvjnI8m_LPClRsjCCHp9ypA&callback=initMaps">
+    </script>
+
     <title>Universal React Starter Kyt</title>
   </head>
 

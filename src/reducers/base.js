@@ -1,7 +1,12 @@
 import React, { PropTypes } from 'react';
 import { createStore } from 'redux'
 
-const baseReducer = (initialState) => {
+const initialProjectState = {
+  borough: '',
+  internships: []
+}
+
+export const baseReducer = (initialState) => {
 
   return (state=initialState, action) => {
     // const getById = (id) => {
@@ -24,4 +29,4 @@ const baseReducer = (initialState) => {
 
 }
 
-export default baseReducer;
+export const projectStore = createStore(baseReducer(initialProjectState))
