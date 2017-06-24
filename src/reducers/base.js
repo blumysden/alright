@@ -14,11 +14,9 @@ const baseReducer = (initialState) => {
       case 'RESET_STORE':
         return action.store
 
-      // case 'ADD_ENTITY':
-      //   entitiesById = addWithChildren(entity, entitiesById)
-      //   parent.entities.splice(position, 0, entity.id)
-      //   entitiesById[parentId] = parent
-      //   return {...state, entitiesById }
+      case 'SET_BOROUGH':
+        let borough = action.borough
+        return Object.assign({}, state, { borough })
     }
 
     return state
