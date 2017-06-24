@@ -9,7 +9,8 @@ if (typeof window == 'undefined') {
 
 const initialProjectState = {
   borough: '',
-  agencies: []
+  agencies: [],
+  myAgencies: []
 }
 
 const saveState = (state) => {
@@ -27,25 +28,40 @@ export const baseReducer = (initialState) => {
     // }
 
     let { id, key } = action,
-        newState = state
+        { myAgencies } = state
+
+    if (!myAgencies) {
+      myAgencies = []
+    }
 
     switch (action.type) {
       case 'RESET_STORE':
         return action.store
 
       case 'SET_BOROUGH':
-        let borough = action.borough
-        return saveState(Object.assign({}, state, { borough }))
+        return saveState(Object.assign({}, state, { borough: action.borough }))
 
       case 'SET_AGENCIES':
-        let agencies = action.agencies
         return saveState(Object.assign({}, state, {
           updatedAgencies: Date.parse(new Date()),
-          agencies
+          agencies: action.agencies
         }))
+
+      case 'SAVE_AGENCY':
+        if (myAgencies.indexOf(action.name) == -1) {
+          myAgencies.push(action.name)
+        }
+        return saveState({ ...state, myAgencies })
+
+      case 'REMOVE_AGENCY':
+        let savedAt = myAgencies.indexOf(action.name)
+        if (savedAt != -1) {
+          myAgencies.splice(savedAt, 1)
+        }
+        return saveState({ ...state, myAgencies })
     }
 
-    return newState
+    return state
   }
 
 }

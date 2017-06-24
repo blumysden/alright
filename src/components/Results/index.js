@@ -9,12 +9,18 @@ class Results extends React.Component {
 
   constructor(props) {
     super(props)
+    this.toggleAgency = this.toggleAgency.bind(this)
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.borough != this.props.borough) {
       this.fetchInternships()
     }
+    console.log('i updated');
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('nextProps', nextProps);
   }
 
   fetchInternships() {
@@ -54,13 +60,23 @@ class Results extends React.Component {
 		})
   }
 
+  toggleAgency(e) {
+    let type = (e.target.getAttribute('data-saved') == 'true') ?
+      'REMOVE_AGENCY' : 'SAVE_AGENCY'
+    console.log('whadda I do', type);
+    this.props.dispatch({
+      name: e.target.getAttribute('data-name'),
+      type
+    })
+  }
+
   render() {
-    if (!this.props.borough) {
+    let { borough, agencies, myAgencies } = this.props
+    if (!borough) {
       return <div></div>
     } else {
       return <div>
-        <p>ALL RIGHT!  I LOVE { this.props.borough }</p>
-        <p>I found { this.props.agencies.length } agencies for you!</p>
+        <p>I found { agencies.length } agencies for you!</p>
         <table className={ styles.table }>
           <thead>
             <tr>
@@ -68,16 +84,20 @@ class Results extends React.Component {
               <th>Agency</th>
               <th>Address</th>
               <th>Phone</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            { this.props.agencies.map((a, i) => {
-              return <tr key={ `agency-${i}`}>
-
+            { agencies.map((a, i) => {
+              let isSaved = (myAgencies.indexOf(a.name) != -1),
+                  className = (isSaved) ? styles.saved : '',
+                  action = (isSaved) ? 'unsave' : 'save'
+              return <tr key={ `agency-${i}`} className={ className }>
                 <td>{i+1}</td>
                 <td><a href={ `https://www.google.com/search?q=${ encodeURIComponent(a.name) }` }>{a.name}</a></td>
                 <td>{a.location}</td>
                 <td>{a.phone}</td>
+                <td data-name={ a.name } data-saved={ isSaved } onClick={ this.toggleAgency }>{ action }</td>
               </tr>
             }) }
           </tbody>
@@ -88,6 +108,6 @@ class Results extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { ...state }
+  return { ...state, numberSaved: state.myAgencies.length }
 }
 export default connect(mapStateToProps)(Results)
