@@ -12,7 +12,7 @@ function Home() {
       <div className={styles.results}>
       <section className="col-sm-12 col-md-6 col-md-offset-3">
         <p className={styles.paragraph}>
-          Welcome to <span><strong>JobHuntrs</strong></span> a platform that allows teenagers and young adults to find jobs and internships by connects them directly to NYC Summer Youth Emploment Agencies.
+          Welcome to <span><strong>JobHuntrs</strong></span> a platform that allows teenagers and young adults to find jobs and internships by connecting them directly to NYC Summer Youth Emploment Agencies.
         </p>
         <Search />
         <Map />
