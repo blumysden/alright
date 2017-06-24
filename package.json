@@ -8,13 +8,16 @@
   "dependencies": {
     "babel-preset-kyt-react": "0.2.0",
     "babel-preset-stage-2": "^6.24.1",
+    "bootstrap": "^3.3.7",
     "compression": "1.6.2",
     "express": "4.14.0",
     "jquery": "^3.2.1",
     "kyt": "0.6.0",
     "react": "15.3.0",
     "react-dom": "15.3.0",
-    "react-router": "2.6.1"
+    "react-redux": "^5.0.5",
+    "react-router": "2.6.1",
+    "redux": "^3.7.0"
   },
   "devDependencies": {
     "enzyme": "2.4.1",

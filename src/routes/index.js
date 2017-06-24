@@ -43,6 +43,7 @@ const routes = (
 if (module.hot) {
   require('../components/Home');    // eslint-disable-line global-require
   require('../components/Tools');   // eslint-disable-line global-require
+  require('../components/Foo');   // eslint-disable-line global-require
 }
 
 export default routes;

@@ -23,11 +23,16 @@ app.use(compression());
 // Setup the public directory so that we can server static assets.
 app.use(express.static(path.join(process.cwd(), KYT.PUBLIC_DIR)));
 
+app.get('/api', (req, res) => {
+  res.send({ 'foo': 'bar' })
+})
+
 // Setup server side routing.
 app.get('*', (request, response) => {
   const history = createMemoryHistory(request.originalUrl);
 
   match({ routes, history }, (error, redirectLocation, renderProps) => {
+
     if (error) {
       response.status(500).send(error.message);
     } else if (redirectLocation) {
