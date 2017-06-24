@@ -8,7 +8,6 @@ import Nav from '../Nav'
 import { projectStore, baseReducer } from '../../reducers/base'
 
 function App({ children, borough }) {
-  console.log('what is borough?', borough);
   return (
     <div className="container">
       <div className="row">
