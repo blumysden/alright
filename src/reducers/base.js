@@ -1,9 +1,22 @@
 import React, { PropTypes } from 'react';
 import { createStore } from 'redux'
 
+const localStorage = (typeof window == 'undefined') ? false : window.localStorage
+
+if (typeof window == 'undefined') {
+  let window = {}
+}
+
 const initialProjectState = {
   borough: '',
   agencies: []
+}
+
+const saveState = (state) => {
+  if (localStorage) {
+    localStorage.setItem('alright', JSON.stringify(state))
+  }
+  return state
 }
 
 export const baseReducer = (initialState) => {
@@ -13,7 +26,8 @@ export const baseReducer = (initialState) => {
     //   return { ...state.entitiesById[id] }
     // }
 
-    let { id, key } = action
+    let { id, key } = action,
+        newState = state
 
     switch (action.type) {
       case 'RESET_STORE':
@@ -21,19 +35,21 @@ export const baseReducer = (initialState) => {
 
       case 'SET_BOROUGH':
         let borough = action.borough
-        return Object.assign({}, state, { borough })
+        return saveState(Object.assign({}, state, { borough }))
 
       case 'SET_AGENCIES':
         let agencies = action.agencies
-        return Object.assign({}, state, {
+        return saveState(Object.assign({}, state, {
           updatedAgencies: Date.parse(new Date()),
           agencies
-        })
+        }))
     }
 
-    return state
+    return newState
   }
 
 }
+
+
 
 export const projectStore = createStore(baseReducer(initialProjectState))

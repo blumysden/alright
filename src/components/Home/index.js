@@ -10,11 +10,7 @@ function Home() {
   return (
     <div className="row">
       <section className="col-sm-12 col-md-6 col-md-offset-3">
-        <p className={styles.paragraph}>
-          Welcome to the <strong>Universal React Starter-kyt</strong>.
-          This starter kyt should serve as the base for an advanced,
-          server-rendered React app.
-        </p>
+        <p className="jumbotron">You need an internship to get ahead.  Or something.  Use this site to get there.</p>
         <Search />
         <Results />
         <Map />

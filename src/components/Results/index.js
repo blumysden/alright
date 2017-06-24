@@ -29,6 +29,7 @@ class Results extends React.Component {
 			success: (data) => {
 
         let agencies = data.map((obj, i) => {
+
           let agency = obj.agency
           let order = i
           let age_grade = obj.grade_level_age_group
@@ -70,7 +71,7 @@ class Results extends React.Component {
           <tbody>
             { this.props.agencies.map((a, i) => {
               return <tr key={ `agency-${i}`}>
-                <td>{a.name}</td>
+                <td><a href={ `https://www.google.com/search?q=${ encodeURIComponent(a.name) }` }>{a.name}</a></td>
                 <td>{a.location}</td>
                 <td>{a.phone}</td>
               </tr>
