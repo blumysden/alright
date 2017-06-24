@@ -24,9 +24,11 @@ const makeProjectReducer = (initialState) => {
       //   parent.entities.splice(position, 0, entity.id)
       //   entitiesById[parentId] = parent
       //   return {...state, entitiesById }
+    }
 
     return state
   }
+
 }
 
 function App({ children }) {
