@@ -3,6 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import styles from './styles.scss';
 
+import API from '../API'
+
 class FooExample extends React.Component {
 
   static propTypes = {
@@ -18,7 +20,11 @@ class FooExample extends React.Component {
   }
 
   render() {
-    return <p>I am the FooExample!  My bar is { this.getBar() }.</p>
+    return <p>
+      I am the FooExample!  My bar is { this.getBar() }.
+          <API />
+      </p>
+
   }
 
 }
