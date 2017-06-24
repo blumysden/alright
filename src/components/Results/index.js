@@ -11,12 +11,6 @@ class Results extends React.Component {
     super(props)
   }
 
-  componentDidMount() {
-    if (window.MAPS_READY) {
-      console.log('I CAN HAZ MAPS');
-    }
-  }
-
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.borough != this.props.borough) {
       this.fetchInternships()
@@ -67,10 +61,20 @@ class Results extends React.Component {
       return <div>
         <p>ALL RIGHT!  I LOVE { this.props.borough }</p>
         <p>I found { this.props.agencies.length } agencies for you!</p>
-        <table>
+        <table className={ styles.table }>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Agency</th>
+              <th>Address</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
           <tbody>
             { this.props.agencies.map((a, i) => {
               return <tr key={ `agency-${i}`}>
+
+                <td>{i+1}</td>
                 <td><a href={ `https://www.google.com/search?q=${ encodeURIComponent(a.name) }` }>{a.name}</a></td>
                 <td>{a.location}</td>
                 <td>{a.phone}</td>

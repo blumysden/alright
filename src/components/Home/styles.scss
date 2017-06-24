@@ -3,3 +3,8 @@
 .paragraph + .paragraph {
   padding-top: $padding;
 }
+
+.results {
+  display: flex;
+  flex-direction: column;
+}
