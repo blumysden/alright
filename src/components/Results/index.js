@@ -31,18 +31,18 @@ class Results extends React.Component {
     if (agencies.length === 0) {
       return false;
     }
-    console.log({ lat: agencies[0].lat, lng: agencies[0].lng });
-    var uluru = {lat: -25.363, lng: 131.044};
+
     var map = new google.maps.Map(ReactDOM.findDOMNode(this.mapContainer), {
-      center: uluru,
+      center: { lng: agencies[0].lng, lat: agencies[0].lat },
       zoom: 12
     });
 
     this.props.agencies.forEach((a) => {
-      // var marker = new google.maps.Marker({
-      //   position: uluru,
-      //   map: map
-      // });
+      let { lng, lat } = a
+      new google.maps.Marker({
+        position: { lng, lat },
+        map: map
+      });
     })
     console.log(ReactDOM.findDOMNode(this.mapContainer));
   }
@@ -68,8 +68,8 @@ class Results extends React.Component {
             location: address + ',\n' + city + ', NY ' + zip,
             phone: phone,
             age: age_grade,
-            lat: marker[0],
-            lng: marker[1]
+            lng: Math.round(marker[0]*1000)/1000,
+            lat: Math.round(marker[1]*1000)/1000
           }
         })
         this.props.dispatch({
