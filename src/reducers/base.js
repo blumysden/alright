@@ -25,7 +25,10 @@ export const baseReducer = (initialState) => {
 
       case 'SET_AGENCIES':
         let agencies = action.agencies
-        return Object.assign({}, state, { agencies })
+        return Object.assign({}, state, {
+          updatedAgencies: Date.parse(new Date()),
+          agencies
+        })
     }
 
     return state

@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 import styles from './styles.scss';
 import $ from 'jquery'
 
@@ -20,6 +21,30 @@ class Results extends React.Component {
     if (prevProps.borough != this.props.borough) {
       this.fetchInternships()
     }
+    if (prevProps.updatedAgencies != this.props.updatedAgencies) {
+      this.renderMap()
+    }
+  }
+
+  renderMap() {
+    let { agencies }  = this.props
+    if (agencies.length === 0) {
+      return false;
+    }
+    console.log({ lat: agencies[0].lat, lng: agencies[0].lng });
+    var uluru = {lat: -25.363, lng: 131.044};
+    var map = new google.maps.Map(ReactDOM.findDOMNode(this.mapContainer), {
+      center: uluru,
+      zoom: 12
+    });
+
+    this.props.agencies.forEach((a) => {
+      // var marker = new google.maps.Marker({
+      //   position: uluru,
+      //   map: map
+      // });
+    })
+    console.log(ReactDOM.findDOMNode(this.mapContainer));
   }
 
   fetchInternships() {
@@ -43,10 +68,10 @@ class Results extends React.Component {
             location: address + ',\n' + city + ', NY ' + zip,
             phone: phone,
             age: age_grade,
-            marker
+            lat: marker[0],
+            lng: marker[1]
           }
         })
-        console.log(agencies);
         this.props.dispatch({
           type: 'SET_AGENCIES',
           agencies
@@ -65,6 +90,7 @@ class Results extends React.Component {
       return <div>
         <p>ALL RIGHT!  I LOVE { this.props.borough }</p>
         <p>I found { this.props.agencies.length } agencies for you!</p>
+        <div className={ styles.map } ref={ (elem) => this.mapContainer = elem }></div>
         <table>
           <tbody>
             { this.props.agencies.map((a, i) => {
@@ -72,7 +98,6 @@ class Results extends React.Component {
                 <td>{a.name}</td>
                 <td>{a.location}</td>
                 <td>{a.phone}</td>
-                <td>{a.marker}</td>
               </tr>
             }) }
           </tbody>
@@ -83,6 +108,6 @@ class Results extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { borough: state.borough, agencies: state.agencies }
+  return { ...state }
 }
 export default connect(mapStateToProps)(Results)
