@@ -11,7 +11,7 @@ function App({ children, borough }) {
   return (
     <div className="container">
       <div className="row">
-        <h1 className={ `${styles.title} col-sm-12` }>Alright</h1>
+        <h1 className={ `${styles.title} col-sm-12` }>NYC SUMMER INTERNSHIP SEARCH</h1>
       </div>
       <Nav />
       <div className={styles.content}>

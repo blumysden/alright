@@ -66,10 +66,17 @@ class Results extends React.Component {
       return <div>
         <p>ALL RIGHT!  I LOVE { this.props.borough }</p>
         <p>I found { this.props.agencies.length } agencies for you!</p>
-        <table>
+        <table className={ styles.table }>
+          <thead>
+            <th>No.</th>
+            <th>Agency</th>
+            <th>Address</th>
+            <th>Phone</th>
+          </thead>
           <tbody>
             { this.props.agencies.map((a, i) => {
               return <tr key={ `agency-${i}`}>
+                <td>{i+1}</td>
                 <td>{a.name}</td>
                 <td>{a.location}</td>
                 <td>{a.phone}</td>
