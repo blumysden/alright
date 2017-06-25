@@ -34,8 +34,15 @@
   width: 800px;
 }
 
+.action {
+  color: #e8e8e8;
+}
+
 .saved {
   td {
     background-color: #E1E5EE;
+    &.action {
+      color: #2A324B;
+    }
   }
 }

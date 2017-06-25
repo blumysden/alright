@@ -97,7 +97,9 @@ class Results extends React.Component {
                 <td><a href={ `https://www.google.com/search?q=${ encodeURIComponent(a.name) }` }>{a.name}</a></td>
                 <td>{a.location}</td>
                 <td>{a.phone}</td>
-                <td data-name={ a.name } data-saved={ isSaved } onClick={ this.toggleAgency }>{ action }</td>
+                <td className={ styles.action }>
+                  <span  data-name={ a.name } data-saved={ isSaved } onClick={ this.toggleAgency } className="glyphicon glyphicon-star" />
+                </td>
               </tr>
             }) }
           </tbody>
